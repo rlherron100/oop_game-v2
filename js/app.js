@@ -8,6 +8,12 @@
 //be used in order to avoid having to add an event listener to each individual keyboard button. Clicking the space between and around the onscreen keyboard buttons should not result in the 
 //handleInteraction() method being called.
 
+const startButton = document.getElementById("btn__reset");
 
-// const phrase = new Phrase('Life is like a box of chocolates');
-// console.log(`Phrase - phrase: ${phrase.phrase}`);
+startButton.addEventListener('click', function start () {
+    const overlay = document.getElementById('overlay');
+    overlay.style.display = 'none';
+    const game = new Game();
+    game.startGame();
+
+})

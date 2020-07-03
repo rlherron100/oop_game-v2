@@ -16,4 +16,25 @@
 class Phrase{
     constructor(phrase) {this.phrase= phrase.toLowerCase()}
 
-}
+    addPhraseToDisplay() {
+        let displayPhrase = this.phrase.split("");
+        let phraseUl = document.querySelector('ul');
+         
+        const regex = new RegExp(/[a-z]/i);
+        for (let i = 0; i < displayPhrase.length; i++)
+            { if (regex.test(displayPhrase[i]))
+                {
+                let phraseLi = document.createElement('li');
+                phraseLi.className = `hide letter ${displayPhrase[i]}`;
+                phraseLi.innerHTML = `${displayPhrase[i]}`;
+                phraseUl.appendChild(phraseLi);}
+            else {
+               let phraseLi = document.createElement('li')
+               phraseLi.className = 'space'
+               phraseLi.innerHTML = `${displayPhrase[i]}`;
+               phraseUl.appendChild(phraseLi);
+            }
+
+            } 
+        }
+    }
