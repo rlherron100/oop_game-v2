@@ -14,7 +14,7 @@
 
 
 class Phrase{
-    constructor(phrase) {this.phrase= phrase.toLowerCase()}
+    constructor(phrase) {this.phrase= phrase.toLowerCase(phrase)}
 
     addPhraseToDisplay() {
         let displayPhrase = this.phrase.split("");
@@ -37,4 +37,48 @@ class Phrase{
 
             } 
         }
-    }
+
+//         Phrase class methods
+// ○ `checkLetter()`: Checks to see if the letter selected by the player matches a letter
+// in the phrase.
+// ○ `showMatchedLetter()`: Reveals the letter(s) on the board that matches the
+// player's selection. To reveal the matching letter(s), select all of the letter DOM
+// elements that have a CSS class name that matches the selected letter and
+// replace each selected element's `hide` CSS class with the `show` CSS class.
+
+        checkLetter() {
+            new Game()
+            if (this.phrase.includes(Game.clicked)) {
+                return true
+            } else {return false}
+         }
+         showMatchedLetter(){
+            
+            for (let i =0; i< this.phraseLi.length; i++) {
+                if (Game.clicked == this.phraseLi) {
+                    this.phraseLi.classList = `show letter ${phraseLi}`;
+                }
+            }
+
+            
+             };
+        };
+
+         
+    
+
+    // if a qwerty letter (identified by innerHTML) is == the innerHTML of a 'hide letter displayPhrase[i]' 
+            //element, the hide letter class is changed to 'active letter displayPhrase[i]' and css class is changed to .show
+        //     let keyboard = document.getElementById('qwerty');
+
+        //     keyboard.addEventListener('click',  (e) => {
+        //      let clicked = e.target;
+        //      let qwerty = document.getElementsByClassName('key');
+        //      let phraseLetters = document.getElementsByClassName('hide letter');
+        //      for (let i = 0; i < qwerty.length; i++) {
+        //          if (clicked.innerHTML == phraseLetters[i]) {
+        //              console.log(phraseLetters[i]);
+        //          }
+ 
+        //     }
+        //  })

@@ -8,12 +8,25 @@
 //be used in order to avoid having to add an event listener to each individual keyboard button. Clicking the space between and around the onscreen keyboard buttons should not result in the 
 //handleInteraction() method being called.
 
+// const startButton = document.getElementById("btn__reset");
+
+// startButton.addEventListener('click', function start () {
+//     const overlay = document.getElementById('overlay');
+//     overlay.style.display = 'none';
+//     const game = new Game();
+//     game.startGame();
+
+// })
+
+const game = new Game();
 const startButton = document.getElementById("btn__reset");
+const keyClass = document.getElementsByClassName('key');
+startButton.addEventListener("click", (e) => {
+  game.startGame();
+});
 
-startButton.addEventListener('click', function start () {
-    const overlay = document.getElementById('overlay');
-    overlay.style.display = 'none';
-    const game = new Game();
-    game.startGame();
 
-})
+for (let i =0; i< keyClass.length; i++) { 
+    keyClass[i].addEventListener('click', () => {
+        game.handleInteraction(event.target);
+     })};
