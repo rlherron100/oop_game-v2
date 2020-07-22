@@ -13,10 +13,10 @@
 //  name that matches the selected letter and replace each selected element's hide CSS class with the show CSS class.
 
 
-class Phrase{
-    constructor(phrase) {this.phrase= phrase.toLowerCase(phrase)}
+class Phrase{ //class
+    constructor(phrase) /*constructor method*/ {this.phrase= phrase.toLowerCase(phrase)} //this.phrase is a property
 
-    addPhraseToDisplay() {
+    addPhraseToDisplay() { //method
         let displayPhrase = this.phrase.split("");
         let phraseUl = document.querySelector('ul');
          
@@ -46,19 +46,21 @@ class Phrase{
 // elements that have a CSS class name that matches the selected letter and
 // replace each selected element's `hide` CSS class with the `show` CSS class.
 
-        checkLetter() {
-            new Game()
-            if (this.phrase.includes(Game.clicked)) {
+        checkLetter() { //method
+            
+            if (this.phrase.includes(game.event.target)) {
                 return true
             } else {return false}
          }
-         showMatchedLetter(){
+         showMatchedLetter(){ //method
             
-            for (let i =0; i< this.phraseLi.length; i++) {
-                if (Game.clicked == this.phraseLi) {
-                    this.phraseLi.classList = `show letter ${phraseLi}`;
-                }
-            }
+            Game.hiddenPhrase[event.target].classList = `show letter ${activePhrase[i]}`;
+
+            // for (let i =0; i< this.phraseLi.length; i++) {
+            //     if (Game.clicked == this.phraseLi) {
+            //         this.phraseLi.classList = `show letter ${phraseLi}`;
+            //     }
+            // }
 
             
              };

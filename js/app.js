@@ -20,13 +20,15 @@
 
 const game = new Game();
 const startButton = document.getElementById("btn__reset");
-const keyClass = document.getElementsByClassName('key');
+
+const keyboard = document.getElementById('qwerty');
+
 startButton.addEventListener("click", (e) => {
   game.startGame();
 });
 
+keyboard.addEventListener('click', () => {
+    if (event.target.type = 'BUTTON') {game.handleInteraction(event.target)}
+})
 
-for (let i =0; i< keyClass.length; i++) { 
-    keyClass[i].addEventListener('click', () => {
-        game.handleInteraction(event.target);
-     })};
+//FIND OUT HOW TO TARGET THE SPECIFIC KEYBOARD KEYS THAT ARE CLICKED AND COMPARE THEM TO THE SPECIFIC CHARACTERS IN THE PHRASE

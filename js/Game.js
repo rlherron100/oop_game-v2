@@ -3,17 +3,17 @@
  * Game.js */
 
 
-class Game{
-    constructor () {
-        this.missed = 0;
-        this.phrases = this.createPhrases();
-        this.activePhrase = this.getRandomPhrase();
+class Game{ //class
+    constructor () { //constructor method
+        this.missed = 0; //property
+        this.phrases = this.createPhrases(); //property
+        this.activePhrase = null; //property
     }
 
 
     
-    createPhrases() {
-        const phrases = [
+    createPhrases() { //method
+        const phrases = [ //array
             new Phrase('You win'),
             new Phrase('This statement is false'),
             new Phrase('Watermelon sugar high'),
@@ -22,19 +22,46 @@ class Game{
         ];
         return phrases;
         };
-    getRandomPhrase() { 
+    getRandomPhrase() { //method
         let randomPhrase = this.phrases[Math.floor(Math.random() * this.createPhrases().length)];
       
         return randomPhrase;
     }
 
-    startGame() {
+    startGame() { //method
         const overlay = document.getElementById('overlay'); 
         overlay.style.display = 'none';     
-        this.getRandomPhrase();
+        this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay(Phrase)
-}
-    checkForWin(win) {
+    }
+
+    handleInteraction() { //method
+                
+    //check clicked key against activePhrase
+        if (Phrase.checkLetter)  {
+            Phrase.showMatchedLetter()
+        }
+
+    // keyboard.addEventListener( 'click', () => {
+    //     for (let i = 0; i<= letters.length; i++) {
+    //         let clicked = event.target
+    //         for (let i = 0; i <= this.activePhrase.length; i++) {
+    //             if (this.activePhrase.includes(clicked)) {
+    //             showMatchedLetter(); //changes activePhrase[i] class to show
+    //             clicked.disabled = true;
+    //             }
+    //     }}})
+
+       // let clicked = event.target;
+       // Phrase.checkLetter();
+       // if (Phrase.checkLetter(clicked)) {
+       //         showMatchedLetter();}
+        //else {removeLife()};              
+       // if (missed == 5) {gameOver()}
+      //  if (checkForWin()) {gameOver()}
+    }
+
+    checkForWin(win) { //method
         new Phrase();
         win = false;
         let phraseLength = Phrase.phraseLi.length;
@@ -46,7 +73,7 @@ class Game{
         }
     }};
 
-    removeLife() {
+    removeLife() { //method
         let lives = document.getElementsByClassName('tries');
         for (let i =0; i < lives.length; i++) {
             if (this.checkLetter = false) {
@@ -56,7 +83,7 @@ class Game{
        this.missed + 1; 
     };
 
-    gameOver() {
+    gameOver() { //method
         
         if (this.checkForWin) {
             overlay.classList = 'win'; 
@@ -68,16 +95,11 @@ class Game{
             document.getElementById('game-over-message').innerHTML = "Sorry, you lose."}
     };
 
-     handleInteraction() {
-                new Phrase();
-                let clicked = event.target;
-                Phrase.checkLetter();
-                if (Phrase.checkLetter(clicked)) {
-                        showMatchedLetter();}
-                else {removeLife()};              
-                if (missed == 5) {gameOver()}
-                if (checkForWin()) {gameOver()}
-            }
+     
+
+            //if this.activePhrase includes 
+            // Your handleInteraction should be using this.activePhrase to validate the letter and should be targeting the button pressed when doing other items 
+           // (like disabling and adding classes).
 
 
 
