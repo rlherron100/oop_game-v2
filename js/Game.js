@@ -35,11 +35,13 @@ class Game{ //class
         this.activePhrase.addPhraseToDisplay(Phrase)
     }
 
-    handleInteraction() { //method
-                
+    handleInteraction(button) { //method
+               
     //check clicked key against activePhrase
-        if (Phrase.checkLetter)  {
-            Phrase.showMatchedLetter()
+        if (this.activePhrase.checkLetter(button.innerHTML))  {
+            button.disabled = true;
+            button.classList = "chosen";
+            this.activePhrase.showMatchedLetter(button.innerHTML);
         }
 
     // keyboard.addEventListener( 'click', () => {

@@ -37,24 +37,19 @@ class Phrase{ //class
 
             } 
         }
-
-//         Phrase class methods
-// ○ `checkLetter()`: Checks to see if the letter selected by the player matches a letter
-// in the phrase.
-// ○ `showMatchedLetter()`: Reveals the letter(s) on the board that matches the
-// player's selection. To reveal the matching letter(s), select all of the letter DOM
-// elements that have a CSS class name that matches the selected letter and
-// replace each selected element's `hide` CSS class with the `show` CSS class.
-
-        checkLetter() { //method
+   checkLetter(clicked) { //method
             
-            if (this.phrase.includes(game.event.target)) {
+            if (game.activePhrase.phrase.includes(clicked)) {
                 return true
             } else {return false}
-         }
-         showMatchedLetter(){ //method
+         };
+
+        
+
+    showMatchedLetter(clicked) { //method
             
-            Game.hiddenPhrase[event.target].classList = `show letter ${activePhrase[i]}`;
+            let matching = document.getElementsByClassName(`hide letter ${clicked}`);
+            matching.className = `show letter ${clicked}`;
 
             // for (let i =0; i< this.phraseLi.length; i++) {
             //     if (Game.clicked == this.phraseLi) {
@@ -64,8 +59,16 @@ class Phrase{ //class
 
             
              };
-        };
+            }
+//         Phrase class methods
+// ○ `checkLetter()`: Checks to see if the letter selected by the player matches a letter
+// in the phrase.
+// ○ `showMatchedLetter()`: Reveals the letter(s) on the board that matches the
+// player's selection. To reveal the matching letter(s), select all of the letter DOM
+// elements that have a CSS class name that matches the selected letter and
+// replace each selected element's `hide` CSS class with the `show` CSS class.
 
+    
          
     
 

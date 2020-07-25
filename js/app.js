@@ -21,14 +21,14 @@
 const game = new Game();
 const startButton = document.getElementById("btn__reset");
 
-const keyboard = document.getElementById('qwerty');
+const keyboardClass = document.getElementsByClassName('key');
 
 startButton.addEventListener("click", (e) => {
   game.startGame();
 });
+for (let i = 0; i< keyboardClass.length; i++) {
+keyboardClass[i].addEventListener('click', () => {
+   game.handleInteraction(event.target)
+})}
 
-keyboard.addEventListener('click', () => {
-    if (event.target.type = 'BUTTON') {game.handleInteraction(event.target)}
-})
-
-//FIND OUT HOW TO TARGET THE SPECIFIC KEYBOARD KEYS THAT ARE CLICKED AND COMPARE THEM TO THE SPECIFIC CHARACTERS IN THE PHRASE
+//SORT OUT GIVING TARGET EVENT A NAME
