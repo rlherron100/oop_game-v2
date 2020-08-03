@@ -42,8 +42,14 @@ class Game{ //class
             button.disabled = true;
             button.classList = "chosen";
             this.activePhrase.showMatchedLetter(button.innerHTML);
+        } else if (!this.activePhrase.checkLetter(button.innerHTML)) {
+            button.disabled = true;
+            button.classList = "chosen";
+            this.removeLife(this.missed);
         }
-
+        this.checkForWin;
+        if (this.checkForWin(win)) {this.gameOver(win)}   //THIS PARAM NEEDS TO PASS IN EITHER A WIN OR LOSE VALUE)};
+        else if (this.checkForWin(lose)) {this.gameOver(lose)};
     // keyboard.addEventListener( 'click', () => {
     //     for (let i = 0; i<= letters.length; i++) {
     //         let clicked = event.target
@@ -63,35 +69,32 @@ class Game{ //class
       //  if (checkForWin()) {gameOver()}
     }
 
-    checkForWin(win) { //method
-        new Phrase();
-        win = false;
-        let phraseLength = Phrase.phraseLi.length;
+    checkForWin(gameStatus) { //method
+        
+        
+        let winningNum = this.activePhrase.phrase.length;
         let counter = 0;
-        for (let i = 0; i < Phrase.phraseLi.length; i++) {
-        if (Phrase.phraseLi[i].classList = `show letter`) 
-        if (counter == phraseLength) {
-            win = true
+        for (let i = 0; i < winningNum; i++) {
+        if (this.activePhrase.phrase[i].classList = `show letter`) {counter++};
+        if (counter == winningNum) {
+           gameStatus= win;
         }
+        else if (this.missed = 5) {gameStatus = lose}
     }};
 
-    removeLife() { //method
-        let lives = document.getElementsByClassName('tries');
-        for (let i =0; i < lives.length; i++) {
-            if (this.checkLetter = false) {
-                lives[i].src = "images/lostHeart.png"
-            }
-        }
-       this.missed + 1; 
-    };
-
-    gameOver() { //method
+    removeLife(number) { //method
+        document.getElementsByTagName("img").item(number).src = "images/lostheart.png";
+        this.missed++;
         
-        if (this.checkForWin) {
+};
+
+    gameOver(boolean) { //method
+        
+        if (boolean = win) {
             overlay.classList = 'win'; 
             overlay.style.display = 'block'
             document.getElementById('game-over-message').innerHTML = "Hooray! You guessed the phrase!"}
-        if (missed == 5) {
+        else if (boolean = lose) {
             overlay.classList = 'lose'; 
             overlay.style.display= 'block'
             document.getElementById('game-over-message').innerHTML = "Sorry, you lose."}

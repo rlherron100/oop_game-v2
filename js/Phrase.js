@@ -19,7 +19,7 @@ class Phrase{ //class
     addPhraseToDisplay() { //method
         let displayPhrase = this.phrase.split("");
         let phraseUl = document.querySelector('ul');
-         
+         phraseUl.className = 'phraseUl';
         const regex = new RegExp(/[a-z]/i);
         for (let i = 0; i < displayPhrase.length; i++)
             { if (regex.test(displayPhrase[i]))
@@ -47,9 +47,11 @@ class Phrase{ //class
         
 
     showMatchedLetter(clicked) { //method
-            
-            let matching = document.getElementsByClassName(`hide letter ${clicked}`);
-            matching.className = `show letter ${clicked}`;
+            let phraseLi = document.querySelectorAll(".phraseUl li");
+            for (let i = 0; i< phraseLi.length; i++) {
+            if (phraseLi[i].innerHTML == clicked)
+            {phraseLi[i].className = `show letter ${clicked}`}
+        }
 
             // for (let i =0; i< this.phraseLi.length; i++) {
             //     if (Game.clicked == this.phraseLi) {
