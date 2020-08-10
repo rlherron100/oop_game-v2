@@ -23,7 +23,7 @@ const startButton = document.getElementById("btn__reset");
 
 const keyboardClass = document.getElementsByClassName('key');
 
-startButton.addEventListener("click", (e) => {
+startButton.addEventListener("click", () => {
   game.startGame();
 });
 for (let i = 0; i< keyboardClass.length; i++) {

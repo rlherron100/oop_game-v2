@@ -42,88 +42,85 @@ class Game{ //class
             button.disabled = true;
             button.classList = "chosen";
             this.activePhrase.showMatchedLetter(button.innerHTML);
+            this.checkForWin();
+            if (this.checkForWin(true)) {this.gameOver()}
         } else if (!this.activePhrase.checkLetter(button.innerHTML)) {
             button.disabled = true;
-            button.classList = "chosen";
+            button.classList = "wrong";
             this.removeLife(this.missed);
         }
-        this.checkForWin;
-        if (this.checkForWin(win)) {this.gameOver(win)}   //THIS PARAM NEEDS TO PASS IN EITHER A WIN OR LOSE VALUE)};
-        else if (this.checkForWin(lose)) {this.gameOver(lose)};
-    // keyboard.addEventListener( 'click', () => {
-    //     for (let i = 0; i<= letters.length; i++) {
-    //         let clicked = event.target
-    //         for (let i = 0; i <= this.activePhrase.length; i++) {
-    //             if (this.activePhrase.includes(clicked)) {
-    //             showMatchedLetter(); //changes activePhrase[i] class to show
-    //             clicked.disabled = true;
-    //             }
-    //     }}})
+         //checkforwin only checks for win, it does not check for loss. If win = false, game continues and do not call gameover. Gamelost will be handled in removelife method.
+       
 
-       // let clicked = event.target;
-       // Phrase.checkLetter();
-       // if (Phrase.checkLetter(clicked)) {
-       //         showMatchedLetter();}
-        //else {removeLife()};              
-       // if (missed == 5) {gameOver()}
-      //  if (checkForWin()) {gameOver()}
     }
 
-    checkForWin(gameStatus) { //method
-        
-        
-        let winningNum = this.activePhrase.phrase.length;
-        let counter = 0;
-        for (let i = 0; i < winningNum; i++) {
-        if (this.activePhrase.phrase[i].classList = `show letter`) {counter++};
-        if (counter == winningNum) {
-           gameStatus= win;
+    checkForWin() { //method
+       let win = false;
+        let hidden = document.querySelectorAll("li.hide").length
+        if (hidden == 0) {
+            win = true;
+            return win
+        } else {
+            win = false;
+            return win;
         }
-        else if (this.missed = 5) {gameStatus = lose}
-    }};
+        
+        
+        }
+        
+
+    ;
 
     removeLife(number) { //method
-        document.getElementsByTagName("img").item(number).src = "images/lostheart.png";
+        let hearts = document.getElementsByTagName("img");
+        hearts.item(number).src = "images/lostheart.png";
         this.missed++;
+        if (this.missed == 5) {
+            this.gameOver();
+          };
         
 };
 
-    gameOver(boolean) { //method
+   gameOver() { //method
         
-        if (boolean = win) {
+        if (this.checkForWin()) {
             overlay.classList = 'win'; 
             overlay.style.display = 'block'
             document.getElementById('game-over-message').innerHTML = "Hooray! You guessed the phrase!"}
-        else if (boolean = lose) {
+        else {
             overlay.classList = 'lose'; 
             overlay.style.display= 'block'
             document.getElementById('game-over-message').innerHTML = "Sorry, you lose."}
+            this.gameReset()
+
     };
 
-     
+    gameReset() {
+        let reset = document.getElementById('btn__reset');
+       reset.addEventListener('click', () => {
+            // After a game is completed, the gameboard needs to be reset so that clicking the "Start Game" button will successfully load a new game.
+            // Remove all li elements from the Phrase ul element.
+            // Enable all of the onscreen keyboard buttons and update each to use the key CSS class, and not use the chosen or wrong CSS classes.
+            // Reset all of the heart images (i.e. the player's lives) in the scoreboard at the bottom of the gameboard to display the liveHeart.png image.
 
-            //if this.activePhrase includes 
-            // Your handleInteraction should be using this.activePhrase to validate the letter and should be targeting the button pressed when doing other items 
-           // (like disabling and adding classes).
-
-
-
-         
-    // })
-    // }
-    // `checkForWin()`: This method checks to see if the player has revealed all of the
-    // letters in the active phrase.
-    // ○ `removeLife()`: This method removes a life from the scoreboard, by replacing one
-    // of the `liveHeart.png` images with a `lostHeart.png` image (found in the `images`
-    // folder) and increments the `missed` property. If the player has five missed
-    // guesses (i.e they're out of lives), then end the game by calling the `gameOver()`
-    // method.
-    // ○ `gameOver()`: This method displays the original start screen overlay, and
-    // depending on the outcome of the game, updates the overlay `h1` element with a
-    // friendly win or loss message, and replaces the overlay’s `start` CSS class with
-    // either the `win` or `lose` CSS class.
-
-
+            let phraseUl = document.querySelectorAll('ul');
+            phraseUl.innerHTML = "";
+            let chosen = document.getElementsByClassName("chosen");
+            for (let i = 0; i < chosen.length; i++) {
+                chosen[i].disabled = false;
+                chosen[i].className = "key";
+            }
+            let wrong = document.getElementsByClassName("wrong");
+            for (let i = 0; i < wrong.length; i++) {
+                wrong[i].disabled = false;
+                wrong[i].className = "key";
+            }
+            let hearts = document.getElementsByTagName("img");
+            for (let i = 0; i < hearts.length; i++)
+            hearts.item(i).src = "images/liveHeart.png";
+       }
+        ); }
+    
 }
 
 // Now it’s time to start adding some user interaction to the game. When a user clicks on one of
