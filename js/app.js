@@ -18,17 +18,17 @@
 
 // })
 
-const game = new Game();
-const startButton = document.getElementById("btn__reset");
+const game = new Game(); //starts a new game
+const startButton = document.getElementById("btn__reset"); //gives the start button a const name
 
-const keyboardClass = document.getElementsByClassName('key');
+const keyboardClass = document.getElementsByClassName('key'); //gives the keyboard a const name
 
-startButton.addEventListener("click", () => {
-  game.startGame();
+startButton.addEventListener("click", () => { //eventlistener for the start button
+  game.startGame(); //calls the startgame method in the game class
 });
-for (let i = 0; i< keyboardClass.length; i++) {
-keyboardClass[i].addEventListener('click', () => {
-   game.handleInteraction(event.target)
+
+for (let i = 0; i< keyboardClass.length; i++) { //for loop that runs through all keys on the keyboard
+  keyboardClass[i].addEventListener('click', () => { //event listener that calls the handleinteraction method in the game class for each key clicked
+    game.handleInteraction(event.target)
 })}
 
-//SORT OUT GIVING TARGET EVENT A NAME
