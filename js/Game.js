@@ -68,7 +68,7 @@ class Game{ //class that handles the game
 
     removeLife(number) { //method that removes a life and changes the heart images to lost heart images
         let hearts = document.getElementsByTagName("img"); //targets the heart images
-        hearts.item(number).src = "images/lostheart.png"; //changes the relavent heart image to a lost heart
+        hearts.item(number).src = "images/lostHeart.png"; //changes the relavent heart image to a lost heart
         this.missed++; //adds 1 value to the missed counter
         if (this.missed == 5) { //if missed reaches 5, it calls the gameOver method
             this.gameOver();
